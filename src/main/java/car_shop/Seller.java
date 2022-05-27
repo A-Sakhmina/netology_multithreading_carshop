@@ -9,7 +9,7 @@ public class Seller {
 
     public synchronized void receiveCar() {
         try {
-            int carCreatingTime = 10000;
+            int carCreatingTime = 1000;
             Thread.sleep(carCreatingTime);
             System.out.println(Thread.currentThread().getName() + " выпустил 1 авто. Итого в салоне "
                     + (shop.getCars().size() + 1) + "шт.");
@@ -24,13 +24,15 @@ public class Seller {
         try {
             System.out.println(Thread.currentThread().getName() + " зашел в автосалон");
             while (shop.getCars().size() == 0) {
-                System.out.println("Машин нет");
+                System.out.println(Thread.currentThread().getName() + " Машин нет");
                 wait();
             }
             System.out.println(Thread.currentThread().getName() + " уехал на новеньком авто");
+            return shop.getCars().remove(0);
         } catch (InterruptedException exception) {
-            exception.printStackTrace();
+//            exception.printStackTrace();
+            System.out.println(Thread.currentThread().getName() + " ушёл");
         }
-        return shop.getCars().remove(0);
+        return null;
     }
 }
