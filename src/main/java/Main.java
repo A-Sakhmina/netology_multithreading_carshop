@@ -5,7 +5,7 @@ public class Main {
         final Shop shop = new Shop();
         ThreadGroup buyers = new ThreadGroup("buyers");
 
-        int timeForABuyer = 2000;
+        final int timeForABuyer = 2000;
         new Thread(buyers, shop::sellCar, "Покупатель1").start();
         Thread.sleep(timeForABuyer);
         new Thread(buyers, shop::sellCar, "Покупатель2").start();

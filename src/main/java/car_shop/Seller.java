@@ -8,16 +8,10 @@ public class Seller {
     }
 
     public synchronized void receiveCar() {
-        try {
-            int carCreatingTime = 1000;
-            Thread.sleep(carCreatingTime);
-            System.out.println(Thread.currentThread().getName() + " выпустил 1 авто. Итого в салоне "
-                    + (shop.getCars().size() + 1) + "шт.");
-            shop.getCars().add(new Car());
-            notifyAll();
-        } catch (InterruptedException exception) {
-            exception.printStackTrace();
-        }
+        System.out.println(Thread.currentThread().getName() + " выпустил 1 авто. Итого в салоне "
+                + (shop.getCars().size() + 1) + "шт.");
+        shop.getCars().add(new Car());
+        notifyAll();
     }
 
     public synchronized Car sellCar() {
@@ -30,7 +24,6 @@ public class Seller {
             System.out.println(Thread.currentThread().getName() + " уехал на новеньком авто");
             return shop.getCars().remove(0);
         } catch (InterruptedException exception) {
-//            exception.printStackTrace();
             System.out.println(Thread.currentThread().getName() + " ушёл");
         }
         return null;

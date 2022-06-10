@@ -12,7 +12,7 @@ public class Shop {
     public List<Car> sellCar() {
         while (soldCars.size() < 10) {
             try {
-                int timeForNewCar = 5000;
+                final int timeForNewCar = 5000;
                 Thread.sleep(timeForNewCar);
             } catch (InterruptedException e) {
                 e.printStackTrace();
@@ -27,7 +27,7 @@ public class Shop {
         int carNumber = 10;
         for (int i = 0; i < carNumber; i++) {
             try {
-                int timeForNewCarToBeDelivered = 5000;
+                final int timeForNewCarToBeDelivered = 5000;
                 Thread.sleep(timeForNewCarToBeDelivered);
             } catch (InterruptedException e) {
                 e.printStackTrace();
