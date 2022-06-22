@@ -6,14 +6,15 @@ import java.util.List;
 public class Shop {
     private List<Car> carList = new ArrayList<>(10);
     private Seller seller = new Seller(this);
+    final static int TIME_FOR_NEW_CAR = 5000;
+    final static int TIME_CAR_DELIVERY = 5000;
 
     List<Car> soldCars = new ArrayList<>(10);
 
     public List<Car> sellCar() {
         while (soldCars.size() < 10) {
             try {
-                final int timeForNewCar = 5000;
-                Thread.sleep(timeForNewCar);
+                Thread.sleep(TIME_FOR_NEW_CAR);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
@@ -27,8 +28,7 @@ public class Shop {
         int carNumber = 10;
         for (int i = 0; i < carNumber; i++) {
             try {
-                final int timeForNewCarToBeDelivered = 5000;
-                Thread.sleep(timeForNewCarToBeDelivered);
+                Thread.sleep(TIME_CAR_DELIVERY);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
